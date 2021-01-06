@@ -12,6 +12,7 @@ use Twilio\Rest\Verify\V2\Service\VerificationCheckInstance;
 use Twilio\Rest\Client;
 use Illuminate\Http\Request;
 
+
 class RegisterController extends Controller
 {
     /*
@@ -106,7 +107,7 @@ class RegisterController extends Controller
         if ($verification->valid) {
             $user = tap(User::where('no_telepon', $data['no_telepon']))->update(['isVerified' => true]);
             /* Authenticate user */
-            Auth::login($user->first());
+            \Auth::login($user->first());
             return redirect()->route('user.home')->with(['message' => 'Phone number verified']);
         }
         return back()->with(['phone_number' => $data['phone_number'], 'error' => 'Invalid verification code entered!']);
