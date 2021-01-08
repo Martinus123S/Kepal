@@ -58,10 +58,6 @@
                             <a class="nav-link" href="{{Route('user.home')}}" style="padding-right:30px;">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="padding-right:30px;" >About Us</a>
-                        </li>
-
-                        <li class="nav-item">
                             <a class="nav-link" href="{{Route('user.belanja')}}" style="padding-right:30px;" >Belanja</a>
                         </li>
                         <li class="nav-item">

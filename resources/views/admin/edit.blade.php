@@ -4,9 +4,8 @@
   <div >Tambah Produk </div>
   <div class="">
     @foreach($produk as $produks)
-    <form class=""  method="post" action="{{route('produk.update',$produks->id)}}" enctype="multipart/form-data">
+    <form class=""  method="post" action="/produks/update/{{$produks->id}}" enctype="multipart/form-data">
       {{ csrf_field() }}
-      {{method_field('DELETE')}}
         <div class="">
           <label for="nama">Nama</label>
           <input type="text" name="nama" value="{{$produks->nama}}">

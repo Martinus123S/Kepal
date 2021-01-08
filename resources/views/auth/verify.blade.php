@@ -17,7 +17,7 @@
                         @csrf
                         <div class="form-group row">
                             <label for="verification_code"
-                                class="col-md-4 col-form-label text-md-right">{{ __('No Telepon') }}</label>
+                                class="col-md-4 col-form-label text-md-right">{{ __('Verification Code') }}</label>
                             <div class="col-md-6">
                                 <input type="hidden" name="no_telepon" value="{{session('no_telepon')}}">
                                 <input id="verification_code" type="tel"

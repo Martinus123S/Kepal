@@ -38,7 +38,7 @@
                                 @endif
                             </div>
                         </div>
-                        @if($message = \Session::get('sukses'))
+                        @if($message = \Session::get('gagal'))
                         <div class="alert alert-warning alert-block">
                             {{$message}}
                         </div>

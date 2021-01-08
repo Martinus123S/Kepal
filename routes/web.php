@@ -40,7 +40,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'auth']], function 
     Route::get('/', function () {
         return view('admin.index');
     });
+    Route::get('/pembayaran/{id}', 'PembayaranController@updatePembayaran')->name('konfirmasi');
+    Route::get('/pembatalan/{id}', 'PembayaranController@batalkanPembayaran')->name('batalkan');
 });
+Route::get('/userPembayaran', 'PembayaranController@user');
 Route::get('/produks/add', 'AddProduk@create');
 Route::get('/produks', 'AddProduk@index')->name('produk.index');
 Route::post('/produks/add', 'AddProduk@insert');
