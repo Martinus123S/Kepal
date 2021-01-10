@@ -66,8 +66,7 @@ function decryptRSA($enc, $dec = "")
         <td>{{$p->total}}</td>
         <td>{{$p->status}}</td>
         @if($p->status == "processed")
-        <td><a href="{{Route('konfirmasi',$p->id)}}" class="btn btn-success">Proses</a>
-            <a href="{{Route('batalkan',$p->id)}}" class="btn btn-success">Batalkan</a></td>
+        <td><a href="{{Route('konfirmasi',$p->id)}}" class="btn btn-success">Proses</a></td>
         @else
         <td><div class="btn btn-success" style="cursor: none;">Sudah Berhasil</div></td>
         @endif
