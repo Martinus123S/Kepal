@@ -11,6 +11,7 @@ use Auth;
 
 class PesanController extends Controller
 {
+
   function index()
   {
     $id = Auth::user()->id;
@@ -35,13 +36,14 @@ class PesanController extends Controller
 
   function insert(Request $request)
   {
+    $rsa = new RSA;
     $id_user = Auth::user()->id;
     $carts = Cart::where('id_user', $id_user)->get();
     $pesan = new Pesan;
     $pesan->id_user = $id_user;
-    $pesan->alamat = $request->alamat;
+    $pesan->alamat = $rsa->encrypt($request->alamat);
     $pesan->total = $request->total;
-    $pesan->no_telepon = $request->no_tel;
+    $pesan->no_telepon = $rsa->encrypt($request->no_tel);
     $pesan->status = "pending";
     $pesan->save();
     $id = $pesan->id;

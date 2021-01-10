@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     POIL's
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -43,6 +43,9 @@
                         @else
                             <li class="nav-item">
                                 <a class="nav-link" href="/produks">Produk</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/userPembayaran">Daftar Pembayaran</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -72,4 +75,13 @@
         </main>
     </div>
 </body>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $("document").ready(function(){
+    setTimeout(function(){
+        $("main div.alert").fadeOut(1000);
+    }, 2000 ); // 5 secs
+  });
+  </script>
 </html>

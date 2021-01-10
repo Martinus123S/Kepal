@@ -9,30 +9,28 @@
 	</div>
 </div>
 <div class="container">
-  <div class="row" style="background-color:white;">
-    <div class="col-sm-1">
-    </div>
-    <div class="col-sm-4">
-      <h6>Produk</h6>
-    </div>
-    <div class="col-sm" style="margin-left:50px;">
-      <h6>Kuantitas</h6>
-    </div>
-    <div class="col-sm" style="margin-left:-20px;">
-      <h6>Harga</h6>
-    </div>
-  </div>
+  <?php
+    $i = 0;
+  ?>
   @foreach($data as $carts)
+  <?php
+    $i++;
+  ?>
   <form class="" method="post" action="{{Route('cart.update',$carts->id)}}" enctype="multipart/form-data">
-    <table class="table" style="width:85%;margin-bottom:-25px;" style="background-color:white;">
+    <table class="table"  style="background-color:white;">
+      @if($i == 1)
     <thead>
       <tr>
-        <th colspan="2"></th>
-        <th></th>
-        <th></th>
+        <th>Gambar</th>
+        <th>Produk</th>
+        <th>Kuantitas</th>
+        <th>Total Harga</th>
+        <th>Harga</th>
+        <th rowspan="2">Option</th>
       </tr>
     </thead>
-  <tbody style="background-color:white;">
+    @endif
+  <tbody>
       {{ csrf_field() }}
       <tr>
         <td rowspan ="3">
@@ -42,47 +40,35 @@
         <td>{{$carts->nama}}
           <input type="hidden" name="nama" value="{{$carts->nama}}">
         </td>
-        <td rowspan="3">
-          <input type="number" name="kuantitas" min="1" value="{{$carts->kuantitas}}" >Kg
+        <td>
+          <input type="number" id="cart-{{$carts->id}}" name="kuantitas" onchange="myFunction({{$carts->id}})" min="1" value="{{$carts->kuantitas}}" >Kg
         </td>
         <td>Rp.{{$carts->total}}
           <input type="hidden" id="subtotal{{$carts->id}}" value="{{$carts->total}}">
         </td>
-      </tr>
-      <tr>
-        <td colspan="3">Rp.{{$carts->harga}}/kg
+        
+        <td>Rp.{{$carts->harga}}/kg
           <input type="hidden" name="harga" value="{{$carts->harga}}">
         </td>
-      </tr>
-      <tr>
         <td>
           <input type="submit" value="Update" class="btn btn-info">
           <a class="btn btn-danger" href="{{Route('cart.delete',$carts->id)}}">hapus</a>
         </td>
-				<td></td>
       </tr>
     </tbody>
-    <tfoot>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </tfoot>
   </table>
     </form>
-  <!-- <script type="text/javascript">
-  function total()
+  <script type="text/javascript">
+  function myFunction($cart)
 		{
-			var bil1, bil2, jumlah;
-			bil1=0;
-			bil2=document.getElementById("subtotal{{$carts->id}}").value;
+			// var bil1, bil2, jumlah;
+			// bil1=0;
+			// bil2=document.getElementById("subtotal{{$carts->id}}").value;
 
-			jumlah=parseInt(bil1)+parseInt(bil2)
-			document.getElementById("total").value=jumlah;
+			// jumlah=parseInt(bil1)+parseInt(bil2)
+			// document.getElementById("total").value=jumlah;
 		}
-  </script> -->
+  </script>
   @endforeach
   <div class="container">
     <!-- <div class="row">
@@ -94,6 +80,7 @@
         <input class="ml-4" type="text" id="total" value="" style="width:150px;" onload="total()" readonly>
       </div>
     </div> -->
+    @if($i > 0)
     <div class="container">
       <div class="row">
         <div class="col-sm-10"></div>
@@ -102,6 +89,7 @@
         </div>
       </div>
     </div>
+    @endif
   </div>
 </div>
 @endsection

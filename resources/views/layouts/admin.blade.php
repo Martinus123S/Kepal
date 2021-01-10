@@ -55,7 +55,7 @@
 </div>
 
     <!-- Main Content -->
-    <div class="container-fluid">
+    <div class="container">
         <div class="side-body">
           @yield('content')
         </div>
